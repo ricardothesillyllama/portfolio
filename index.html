@@ -691,10 +691,13 @@
           </div>
           <h3 class="proj-title">Licha 理察 — AI Observability Core</h3>
           <div class="proj-body">
-            <p><strong>Problem:</strong> Most personal analytics tools are fragmented — financial, health, and behavioural data exist in silos with no unified interpretation.</p>
-            <p><strong>Approach:</strong> Designed a system that treats the user as a “digital twin”, where raw inputs are processed through AI-defined formulas and mapped into a real-time state model.</p>
-            <p><strong>Build:</strong> Backend API in FastAPI, structured data layer in SQL, and modular ingestion (manual input, batch, AI assistant). Focus on clean architecture rather than overengineering.</p>
-            <p><strong>Outcome:</strong> Functional prototype with anomaly detection logic and forward projection (“forecast cones”). Currently iterating on usability and real-world input consistency.</p>
+            <p><strong>Problem:</strong> Athletes and coaches make training decisions on feel — there's no tool that tells you whether today's fatigue is normal accumulation or the start of a breakdown, or when your body will peak.</p>
+
+            <p><strong>Approach:</strong> Built a system where users define their own metrics (load, RPE, sleep, HRV), then a multi-layer engine — HMM physiological state inference, Banister impulse-response modelling, and Granger causal analysis — runs continuously on top of that data to produce real decisions, not dashboards.</p>
+
+            <p><strong>Build:</strong> FastAPI backend with TimescaleDB for time-series storage, Celery + Redis for async AI report generation, and a dual-track NLP parser (regex fast path + Groq LLM slow path) for natural language data entry. Rate limiting on compute-heavy endpoints, sliding window via Redis. Vue 3 frontend with a Three.js digital twin sphere whose colour is driven live by the HMM output.</p>
+
+            <p><strong>Outcome:</strong> Working system that classifies physiological state across five HMM states, projects Banister performance peaks with Bootstrap confidence intervals, detects causal drivers between metrics via Granger + DoWhy, and generates LLM-written prescriptions on each check-in. Backend test coverage at 80%, frontend at 87%.</p>
           </div>
           <div class="proj-stack">
             <span class="tag tech" data-insight="RESTful API routing">FastAPI</span>
